@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#1dd3ce</color>
+    <color name="colorPrimaryDark">#09ccc6</color>
+    <color name="colorAccent">#00b8d4</color>
+
+    <!-- Colores login y generales -->
+    <color name="grisoscuro">#636363</color>
+    <color name="grisclaro">#E3E3E3</color>
+    <color name="blanco">#ffffff</color>
+    <color name="negro">#000000</color>
+
+    <!-- Colores Registro -->
+    <color name="b_edit">#CEDDDD</color>
+    <color name="b_fondo">#C31DD3CE</color>
+
+</resources>
