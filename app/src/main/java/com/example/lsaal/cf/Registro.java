@@ -64,14 +64,16 @@ public class Registro extends AppCompatActivity implements Response.Listener<JSO
 
     @Override
     public void onErrorResponse(VolleyError error) {
-        Toast.makeText(this,"Error al registrar",Toast.LENGTH_SHORT).show();
-    }
-    @Override
-    public void onResponse(JSONObject response) {
         Toast.makeText(this,"Cuenta registrada correctamente",Toast.LENGTH_SHORT).show();
         goToMain();
         saveDataOnPreferences(ine,curp,nombre,apellidos,fecha,direccion,telefono,correo,"f");
         Toast.makeText(this,"Datos almacenados en preferences", Toast.LENGTH_LONG).show();
+
+    }
+    @Override
+    public void onResponse(JSONObject response) {
+
+        Toast.makeText(this,"Error al registrar. Curp, ine o correo ya están registrados en otra cuenta.\nContactenos support@capitalfresco.com",Toast.LENGTH_SHORT).show();
 
     }
     public boolean isValidCurp(String curp){
@@ -81,7 +83,7 @@ public class Registro extends AppCompatActivity implements Response.Listener<JSO
         return !TextUtils.isEmpty(ine)&&ine.length()==14;
     }
     public boolean isValidFecha(String fecha){
-        return TextUtils.isEmpty(fecha);
+        return !TextUtils.isEmpty(fecha);
     }
     private boolean isValidEmail(String email){//Valida el email
         return !TextUtils.isEmpty(email)&& Patterns.EMAIL_ADDRESS.matcher(email).matches();
@@ -90,7 +92,7 @@ public class Registro extends AppCompatActivity implements Response.Listener<JSO
         return password.length()>4;
     }
     private boolean isValidNumber(String number){
-        return !TextUtils.isEmpty(number)&&number.length()==10;
+        return !TextUtils.isEmpty(number)&&number.length()!=10;
     }
     private boolean isValidAllData(String curp, String ine,String fecha,String email,String password, String number){
 
@@ -117,7 +119,7 @@ public class Registro extends AppCompatActivity implements Response.Listener<JSO
         }
     }
     private void carga_webService(){
-        ine=edName.getText().toString();
+        ine=edIne.getText().toString();
         curp=edCurp.getText().toString();
         nombre=edName.getText().toString();
         apellidos=edApellidos.getText().toString();

@@ -203,19 +203,20 @@
                     android:hint="Correo electronico"
                     android:inputType="text|textEmailAddress"
                     android:maxLength="30" />
+
                 <EditText
-                    android:layout_width="345dp"
-                    android:layout_gravity="center_vertical|center"
-                    android:gravity="center"
-                    android:layout_height="45dp"
-                    android:inputType="number"
-                    android:ems="10"
-                    android:hint="Número Telefonico"
                     android:id="@+id/edtNumTelefonico"
+                    android:layout_width="345dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center_vertical|center"
+                    android:layout_margin="10dp"
+                    android:autoLink="phone"
                     android:background="@drawable/obj_redondo"
                     android:backgroundTint="@color/b_edit"
-                    android:layout_margin="10dp"
-                    android:autoLink="phone" />
+                    android:gravity="center"
+                    android:hint="Número Telefonico"
+                    android:inputType="number"
+                    android:maxLength="10" />
 
                 <EditText
                     android:id="@+id/edtContraseña"
