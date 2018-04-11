@@ -72,33 +72,34 @@
                 android:orientation="vertical" >
 
 
-
                 <EditText
-                    android:layout_width="345dp"
-                    android:layout_gravity="center_vertical|center"
-                    android:gravity="center"
-                    android:layout_height="45dp"
-                    android:ems="10"
                     android:id="@+id/edtNombre"
-                    android:hint="Nombre (s)"
+                    android:layout_width="345dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center_vertical|center"
+                    android:layout_margin="10dp"
                     android:background="@drawable/obj_redondo"
                     android:backgroundTint="@color/b_edit"
-                    android:layout_margin="10dp"
-                    android:inputType="textPersonName" />
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="Nombre (s)"
+                    android:inputType="textPersonName"
+                    android:maxLength="20" />
 
 
                 <EditText
-                    android:layout_width="345dp"
-                    android:layout_gravity="center_vertical|center"
-                    android:gravity="center"
-                    android:layout_height="45dp"
-                    android:inputType="text|textPersonName"
-                    android:ems="10"
-                    android:hint="Apellidos"
                     android:id="@+id/edtApellidos"
+                    android:layout_width="345dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center_vertical|center"
+                    android:layout_margin="10dp"
                     android:background="@drawable/obj_redondo"
                     android:backgroundTint="@color/b_edit"
-                    android:layout_margin="10dp"/>
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="Apellidos"
+                    android:inputType="text|textPersonName"
+                    android:maxLength="30" />
 
                 <EditText
                     android:id="@+id/edtCurp"
@@ -112,7 +113,8 @@
                     android:ems="10"
                     android:gravity="center"
                     android:hint="CURP (RAPL950515HGTMLS05)"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    android:maxLength="18" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -125,52 +127,56 @@
                         android:layout_height="100dp" />
 
                     <EditText
-                        android:layout_width="190dp"
-                        android:layout_gravity="right"
-                        android:gravity="center"
-                        android:layout_height="45dp"
-                        android:inputType="date"
-                        android:ems="10"
-                        android:hint="Código CIC INE"
                         android:id="@+id/edtINE"
-                        android:background="@drawable/obj_redondo"
-                        android:backgroundTint="@color/b_edit"
+                        android:layout_width="190dp"
+                        android:layout_height="45dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="right"
+                        android:layout_marginEnd="17dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:layout_marginEnd="17dp"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentEnd="true" />
+                        android:background="@drawable/obj_redondo"
+                        android:backgroundTint="@color/b_edit"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="Código CIC INE"
+                        android:inputType="date"
+                        android:maxLength="14" />
                 </RelativeLayout>
 
                 <EditText
-                    android:layout_width="345dp"
-                    android:layout_gravity="center_vertical|center"
-                    android:gravity="center"
-                    android:layout_height="45dp"
-                    android:inputType="date"
-                    android:ems="10"
-                    android:hint="Fecha nacimiento (AAAA-MM-DD))"
                     android:id="@+id/edtFechaNa"
+                    android:layout_width="345dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center_vertical|center"
+                    android:layout_margin="10dp"
                     android:background="@drawable/obj_redondo"
                     android:backgroundTint="@color/b_edit"
-                    android:layout_margin="10dp"/>
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="Fecha nacimiento (AAAA-MM-DD))"
+                    android:inputType="date"
+                    android:maxLength="10" />
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
                 </RelativeLayout>
+
                 <EditText
-                    android:layout_width="345dp"
-                    android:layout_gravity="center_vertical|center"
-                    android:gravity="center"
-                    android:layout_height="45dp"
-                    android:inputType="textPostalAddress"
-                    android:ems="10"
-                    android:hint="Dirección (Calle, Colonia, CP)"
                     android:id="@+id/edtUbicacion"
+                    android:layout_width="345dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center_vertical|center"
+                    android:layout_margin="10dp"
                     android:background="@drawable/obj_redondo"
                     android:backgroundTint="@color/b_edit"
-                    android:layout_margin="10dp"/>
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="Dirección (Calle, Colonia, CP)"
+                    android:inputType="textPostalAddress"
+                    android:maxLength="40" />
                 <Button
                     android:layout_width="230dp"
                     android:id="@+id/ubicacion"
@@ -183,18 +189,20 @@
                     android:background="@drawable/obj_redondo"
                     android:backgroundTint="@color/b_edit"
                     />
+
                 <EditText
-                    android:layout_width="345dp"
-                    android:layout_gravity="center_vertical|center"
-                    android:gravity="center"
-                    android:layout_height="45dp"
-                    android:inputType="text|textEmailAddress"
-                    android:ems="10"
-                    android:hint="Correo electronico"
                     android:id="@+id/edtCorreo"
+                    android:layout_width="345dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center_vertical|center"
+                    android:layout_margin="10dp"
                     android:background="@drawable/obj_redondo"
                     android:backgroundTint="@color/b_edit"
-                    android:layout_margin="10dp"/>
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="Correo electronico"
+                    android:inputType="text|textEmailAddress"
+                    android:maxLength="30" />
                 <EditText
                     android:layout_width="345dp"
                     android:layout_gravity="center_vertical|center"
@@ -210,18 +218,19 @@
                     android:autoLink="phone" />
 
                 <EditText
-                    android:layout_width="345dp"
-                    android:layout_gravity="center_vertical|center"
-                    android:gravity="center"
-                    android:layout_height="45dp"
-                    android:inputType="textVisiblePassword"
-                    android:ems="10"
-                    android:password="true"
-                    android:hint="Contraseña"
                     android:id="@+id/edtContraseña"
+                    android:layout_width="345dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center_vertical|center"
+                    android:layout_margin="10dp"
                     android:background="@drawable/obj_redondo"
                     android:backgroundTint="@color/b_edit"
-                    android:layout_margin="10dp"/>
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="Contraseña"
+                    android:inputType="textVisiblePassword"
+                    android:maxHeight="30dp"
+                    android:password="true" />
 
                 <Button
                     android:id="@+id/btnEnviar_D"

@@ -13,22 +13,22 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="500dp">
+            android:layout_height="520dp">
 
-                <EditText
-                    android:id="@+id/txtUser"
-                    android:layout_width="345dp"
-                    android:layout_height="40dp"
-                    android:layout_below="@+id/textView6"
-                    android:layout_centerHorizontal="true"
-                    android:layout_gravity="center"
-                    android:background="@drawable/obj_redondo"
-                    android:ems="10"
-                    android:gravity="center"
-                    android:hint="alguien@email.com"
-                    android:inputType="textPersonName"
-                    android:password="false"
-                    android:textColorHint="@color/grisoscuro" />
+            <EditText
+                android:id="@+id/txtUser"
+                android:layout_width="345dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/textView6"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:background="@drawable/obj_redondo"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="alguien@email.com"
+                android:inputType="text|textEmailAddress"
+                android:password="false"
+                android:textColorHint="@color/grisoscuro" />
 
             <EditText
                 android:id="@+id/txtPassword"
@@ -42,7 +42,7 @@
                 android:ems="10"
                 android:gravity="center"
                 android:hint="Contraseña"
-                android:inputType="textPersonName"
+                android:inputType="textPersonName|textPassword"
                 android:password="true"
                 android:textColorHint="@color/grisoscuro" />
 
@@ -93,9 +93,10 @@
                 android:id="@+id/btnLogin"
                 android:layout_width="200dp"
                 android:layout_height="40dp"
-                android:layout_below="@+id/pbLoading"
+                android:layout_below="@+id/switchRemember"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
+                android:layout_marginTop="16dp"
                 android:layout_weight="0.2"
                 android:autoText="false"
                 android:background="@drawable/obj_redondo"
@@ -118,15 +119,14 @@
                 android:gravity="center_horizontal|center"
                 android:text="Registrame" />
 
-            <ProgressBar
-                android:id="@+id/pbLoading"
-                style="?android:attr/progressBarStyle"
+            <Switch
+                android:id="@+id/switchRemember"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/txtPassword"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="12dp"
-                android:visibility="invisible" />
+                android:layout_marginTop="19dp"
+                android:text="Recuerdame" />
 
         </RelativeLayout>
 
