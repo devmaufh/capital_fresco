@@ -30,7 +30,7 @@ public class Login extends AppCompatActivity implements Response.Listener<JSONOb
     usuario usr= new usuario();//Para salvar datos
 
     //Para conexion
-    String ip="192.168.1.75";
+    String ip="192.168.43.207";
     RequestQueue rq;
     JsonRequest jrq;
     //
@@ -40,6 +40,10 @@ public class Login extends AppCompatActivity implements Response.Listener<JSONOb
     private Switch switchRember;
 
     private SharedPreferences prefs; //Persistencia de datos.
+    private void ClearAllData(){
+        inicio.setText("");
+        pass.setText("");
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +95,7 @@ public class Login extends AppCompatActivity implements Response.Listener<JSONOb
             String correo=jsonObject.optString("correo");
             String aceptado=jsonObject.optString("aceptado");
             goToMain();
+            ClearAllData();
             saveDataOnPreferences(ine,curp,nombre,apellidos,fecha,direccion,telefono,correo,aceptado);//Aquí se
         }catch (JSONException e){
             e.printStackTrace();

@@ -20,6 +20,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class Registro extends AppCompatActivity implements Response.Listener<JSONObject>, Response.ErrorListener {
@@ -27,9 +28,20 @@ public class Registro extends AppCompatActivity implements Response.Listener<JSO
     private JsonRequest jrq;
     private EditText edName,edApellidos,edCurp,edIne,edFecha,edDireccion,edCorreo,edTelefono,edContraseña;
     private Button btnRegistrar, btnUbicacion;
-    private String ip="192.168.1.75";
+    private String ip="192.168.43.207";
     private SharedPreferences prefs; //Persistencia de datos.
     private String ine,curp,nombre,apellidos,fecha,direccion,telefono,correo,contraseña;
+    private void ClearAll(){
+        edName.setText("");
+        edApellidos.setText("");
+        edCurp.setText("");
+        edIne.setText("");
+        edFecha.setText("");
+        edDireccion.setText("");
+        edCorreo.setText("");
+        edTelefono.setText("");
+        edContraseña.setText("");
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,13 +79,23 @@ public class Registro extends AppCompatActivity implements Response.Listener<JSO
         Toast.makeText(this,"Cuenta registrada correctamente",Toast.LENGTH_SHORT).show();
         goToMain();
         saveDataOnPreferences(ine,curp,nombre,apellidos,fecha,direccion,telefono,correo,"f");
-        Toast.makeText(this,"Datos almacenados en preferences", Toast.LENGTH_LONG).show();
-
+        ClearAll();
     }
     @Override
     public void onResponse(JSONObject response) {
+        JSONArray jsonArray= response.optJSONArray("datos");
+        JSONObject jsonObject=null;
+        try{
+            jsonObject=jsonArray.getJSONObject(0);
+            if(jsonObject.optString("clave_ine").equals("null")){
+                Toast.makeText(this,"Error al conectar con servidor. Intentelo más tarde",Toast.LENGTH_SHORT);
+            }else{
+                Toast.makeText(this,"Error al registrar. Curp, ine o correo ya están registrados en otra cuenta.\nContactenos support@capitalfresco.com",Toast.LENGTH_SHORT).show();
+            }
 
-        Toast.makeText(this,"Error al registrar. Curp, ine o correo ya están registrados en otra cuenta.\nContactenos support@capitalfresco.com",Toast.LENGTH_SHORT).show();
+        }catch(Exception e){
+            Toast.makeText(this,"Error 404. Reportar bug.",Toast.LENGTH_SHORT).show();
+        }
 
     }
     public boolean isValidCurp(String curp){
@@ -158,4 +180,5 @@ public class Registro extends AppCompatActivity implements Response.Listener<JSO
     private void goToMain(){
         //Mandar a pantalla principal
     }
+
 }
