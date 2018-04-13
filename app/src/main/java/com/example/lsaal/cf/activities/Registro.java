@@ -28,7 +28,7 @@ public class Registro extends AppCompatActivity implements Response.Listener<JSO
     private JsonRequest jrq;
     private EditText edName,edApellidos,edCurp,edIne,edFecha,edDireccion,edCorreo,edTelefono,edContraseña;
     private Button btnRegistrar, btnUbicacion;
-    private String ip="192.168.43.207";
+    private String ip="192.168.1.75";
     private SharedPreferences prefs; //Persistencia de datos.
     private String ine,curp,nombre,apellidos,fecha,direccion,telefono,correo,contraseña;
     private void ClearAll(){

@@ -4,6 +4,7 @@ package com.example.lsaal.cf;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -26,11 +27,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Login extends AppCompatActivity implements Response.Listener<JSONObject>, Response.ErrorListener {
-    usuario usr= new usuario();//Para salvar datos
+    Boolean log=false;
 
     //Para conexion
-    String ip="192.168.43.207";
+    String ip="192.168.1.75";
     RequestQueue rq;
     JsonRequest jrq;
     //
@@ -38,6 +43,7 @@ public class Login extends AppCompatActivity implements Response.Listener<JSONOb
     private EditText pass;
     private Button btnLogin,btnRegister;
     private Switch switchRember;
+    private String ine="";
 
     private SharedPreferences prefs; //Persistencia de datos.
     private void ClearAllData(){
@@ -75,37 +81,60 @@ public class Login extends AppCompatActivity implements Response.Listener<JSONOb
     @Override
     public void onErrorResponse(VolleyError error) {
         //Conexion error
-        Toast.makeText(getApplicationContext(),"Error usuario o contraseña incorrectos",Toast.LENGTH_SHORT).show();
+        if(log){
+            Toast.makeText(this,"Historial de sesion actualizado.",Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(getApplicationContext(),"Error usuario o contraseña incorrectos",Toast.LENGTH_SHORT).show();
+        }
     }
     @Override
     public void onResponse(JSONObject response) {
         //Conexion Succesfull
-        JSONArray jsonArray= response.optJSONArray("datos");
-        JSONObject jsonObject=null;
-        Toast.makeText(getApplicationContext(),"Inicio de sesión correcto",Toast.LENGTH_SHORT).show();
-        try {
-            jsonObject=jsonArray.getJSONObject(0);
-            String ine=jsonObject.optString("clave_ine");
-            String curp=jsonObject.optString("curp");
-            String nombre=jsonObject.optString("nombre");
-            String apellidos=jsonObject.optString("apellios");
-            String fecha=jsonObject.optString("fecha_nac");
-            String direccion=jsonObject.optString("direccion");
-            String telefono=jsonObject.optString("telefono");
-            String correo=jsonObject.optString("correo");
-            String aceptado=jsonObject.optString("aceptado");
-            goToMain();
-            ClearAllData();
-            saveDataOnPreferences(ine,curp,nombre,apellidos,fecha,direccion,telefono,correo,aceptado);//Aquí se
-        }catch (JSONException e){
-            e.printStackTrace();
-        }
+
+            log=true;
+            JSONArray jsonArray= response.optJSONArray("datos");
+            JSONObject jsonObject=null;
+            Toast.makeText(getApplicationContext(),"Inicio de sesión correcto",Toast.LENGTH_SHORT).show();
+            try {
+                jsonObject=jsonArray.getJSONObject(0);
+                String ine=jsonObject.optString("clave_ine");
+                this.ine=ine;
+                String curp=jsonObject.optString("curp");
+                String nombre=jsonObject.optString("nombre");
+                String apellidos=jsonObject.optString("apellios");
+                String fecha=jsonObject.optString("fecha_nac");
+                String direccion=jsonObject.optString("direccion");
+                String telefono=jsonObject.optString("telefono");
+                String correo=jsonObject.optString("correo");
+                String aceptado=jsonObject.optString("aceptado");
+                historial_login();
+                goToMain();
+                ClearAllData();
+                saveDataOnPreferences(ine,curp,nombre,apellidos,fecha,direccion,telefono,correo,aceptado);//Aquí se
+
+            }catch (JSONException e){
+                e.printStackTrace();
+            }
+
+
     }
     private void login(){
         String url="http://"+ip+"/capital/login.php?correo="+inicio.getText().toString()+
                 "&contraseña="+pass.getText().toString();
         jrq= new JsonObjectRequest(Request.Method.GET,url,null,this,this);
         rq.add(jrq);
+    }
+    private void historial_login() {
+        Toast.makeText(this,"INE: "+ine, Toast.LENGTH_LONG).show();
+        String deviceName = Build.MANUFACTURER + "%20" + Build.MODEL.replace(" ","%20");
+        String ubicacion = "Mexico city".replace(" ","%20");
+        Date date = new Date();
+        DateFormat fecha = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String f=fecha.format(date).replace(" ","%20");
+        String url="http://"+ip+"/capital/register_history.php?dispositivo="+deviceName+"&fecha="+f+"&lugar="+ubicacion+"&ine="+ine;
+        jrq= new JsonObjectRequest(Request.Method.GET,url,null,this,this);
+        rq.add(jrq);
+
     }
     private void bindUI(){
         inicio=(EditText) findViewById(R.id.txtUser);
@@ -159,6 +188,5 @@ public class Login extends AppCompatActivity implements Response.Listener<JSONOb
     private void launchRegister(){
         startActivity(new Intent(this,Registro.class));
     }
-
 
 }
