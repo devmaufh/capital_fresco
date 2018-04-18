@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://C:\Capital_Fresco App\capital_fresco\CF.iml" filepath="C:\Capital_Fresco App\capital_fresco\CF.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Capital_Fresco App\capital_fresco\app\app.iml" filepath="C:\Capital_Fresco App\capital_fresco\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/capital_fresco.iml" filepath="$PROJECT_DIR$/capital_fresco.iml" />
     </modules>
   </component>
