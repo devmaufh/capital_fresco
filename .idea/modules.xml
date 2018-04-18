@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/CF.iml" filepath="$PROJECT_DIR$/CF.iml" />
+      <module fileurl="file://C:\Capital_Fresco App\capital_fresco\CF.iml" filepath="C:\Capital_Fresco App\capital_fresco\CF.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/capital_fresco.iml" filepath="$PROJECT_DIR$/capital_fresco.iml" />
     </modules>
   </component>
 </project>

@@ -33,7 +33,6 @@ import java.util.Date;
 
 public class Login extends AppCompatActivity implements Response.Listener<JSONObject>, Response.ErrorListener {
     Boolean log=false;
-
     //Para conexion
     String ip="192.168.1.75";
     RequestQueue rq;
