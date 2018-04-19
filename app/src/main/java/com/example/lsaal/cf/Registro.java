@@ -69,7 +69,7 @@ public class Registro extends AppCompatActivity implements Response.Listener<JSO
         edTelefono=(EditText)findViewById(R.id.edtNumTelefonico);
         edContraseña=(EditText)findViewById(R.id.edtContraseña);
         //Botones
-        btnUbicacion = findViewById(R.id.ubicacion);
+        //btnUbicacion = findViewById(R.id.ubicacion);
         btnRegistrar=(Button)findViewById(R.id.btnEnviar_D);
         rq= Volley.newRequestQueue(getApplicationContext());
     }
