@@ -187,7 +187,7 @@ public class Login extends AppCompatActivity implements Response.Listener<JSONOb
     }
     private void launchRegister(){
         //startActivity(new Intent(this,Registro.class));
-        startActivity(new Intent(this,Agricult.class));
+        startActivity(new Intent(this,Registro.class));
     }
 
 }
